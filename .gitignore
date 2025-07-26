@@ -1,0 +1,12 @@
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.pipenv/
+
+# VS Code settings
+.vscode/
+
+# PyCharm settings
+.idea/
