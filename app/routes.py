@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, Depends
 from app.models import Task, TaskCreate
 from app.services import TaskService
+from app.ai_agent import ask_ai
 
 router = APIRouter()
 service = TaskService()
@@ -36,3 +37,8 @@ def delete_task(task_id: int):
     deleted = service.delete(task_id)
     if not deleted:
         raise HTTPException(status_code=404, detail="Task not found")
+
+@router.post("/ai")
+def talk_to_ai(message: str):
+    response = ask_ai(message)
+    return {"response": response}
